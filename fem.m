@@ -157,20 +157,24 @@ pdeplot3D(model, ...
     'Deformation',            res.Displacement, ...
     'DeformationScaleFactor', sf);
 
-colormap('jet');
-cb = colorbar;
-cb.Label.String   = 'Esfuerzo de Von Mises [Pa]';
-cb.Label.FontSize = 11;
+    colormap('jet');
+    cb = colorbar;
+    cb.Label.String   = 'Esfuerzo de Von Mises [Pa]';
+    cb.Label.FontSize = 11;
+    cb.Label.Color    = 'r';
+    cb.Color          = 'r';
 
-title({ ...
-    'Esfuerzos de Von Mises — Placa de Acero con 4 Barrenos', ...
-    sprintf('Presión = 50 MPa  |  \\sigma_{VM}^{max} = %.1f MPa  |  Deformación ×%.0f', ...
-            max(vm)/1e6, sf)}, ...
-    'FontSize', 13, 'FontWeight', 'bold');
+    title({ ...
+        'Esfuerzos de Von Mises — Placa de Acero con 4 Barrenos', ...
+        sprintf('Presión = 50 MPa  |  \\sigma_{VM}^{max} = %.1f MPa  |  Deformación ×%.0f', ...
+                max(vm)/1e6, sf)}, ...
+        'FontSize', 13, 'FontWeight', 'bold', 'Color', 'r');
 
-xlabel('X [m]'); ylabel('Y [m]'); zlabel('Z [m]');
-view(35, 25);
-axis equal; grid on;
+    xlabel('X [m]', 'Color', 'r'); ylabel('Y [m]', 'Color', 'r'); zlabel('Z [m]', 'Color', 'r');
+    ax = gca;
+    set(ax, 'XColor', 'r', 'YColor', 'r', 'ZColor', 'r');
+    view(35, 25);
+    axis equal; grid on;
 
 %% ----------------------------------------------------------------
 %% 10. VISUALIZACIÓN — Vista superior (concentración en barrenos)
@@ -183,13 +187,16 @@ pdeplot3D(model, ...
     'Deformation',            res.Displacement, ...
     'DeformationScaleFactor', sf);
 
-colormap('jet');
-colorbar;
-title('Vista Superior — Concentración de Esfuerzos en Barrenos', ...
-      'FontSize', 12);
-xlabel('X [m]'); ylabel('Y [m]'); zlabel('Z [m]');
-view(0, 90);
-axis equal; grid on;
+    colormap('jet');
+    cb2 = colorbar;
+    cb2.Color = 'r';
+    title('Vista Superior — Concentración de Esfuerzos en Barrenos', ...
+        'FontSize', 12, 'Color', 'r');
+    xlabel('X [m]', 'Color', 'r'); ylabel('Y [m]', 'Color', 'r'); zlabel('Z [m]', 'Color', 'r');
+    ax2 = gca;
+    set(ax2, 'XColor', 'r', 'YColor', 'r', 'ZColor', 'r');
+    view(0, 90);
+    axis equal; grid on;
 
 fprintf('========================================\n');
 fprintf(' ANÁLISIS COMPLETADO\n');
